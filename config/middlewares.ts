@@ -14,7 +14,6 @@ const config: Core.Config.Middlewares = [
           "media-src": ["'self'", "data:", "blob:", "https:"],
         },
       },
-      // 🔥 Important: Allow secure cookies in production
       hsts: {
         maxAge: 31536000,
         includeSubDomains: true,
@@ -25,18 +24,14 @@ const config: Core.Config.Middlewares = [
   {
     name: "strapi::cors",
     config: {
-      origin: [
-        "https://lms-frontend-one-delta.vercel.app",
-        "https://lms-backend-production-385b.up.railway.app",
-      ],
+      origin: ["https://lms-frontend-one-delta.vercel.app"],
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
-      credentials: true, // 🔥 Important: Allow credentials (cookies)
+      credentials: true,
     },
   },
-  "strapi::security",
-  "strapi::cors",
   "strapi::poweredBy",
+  "strapi::logger",
   "strapi::query",
   "strapi::body",
   "strapi::session",
