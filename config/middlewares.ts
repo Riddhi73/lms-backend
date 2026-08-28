@@ -20,9 +20,6 @@ const config: Core.Config.Middlewares = [
         includeSubDomains: true,
         preload: true,
       },
-      xFrameOptions: {
-        action: "sameorigin",
-      },
     },
   },
   {
