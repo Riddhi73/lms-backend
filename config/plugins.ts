@@ -36,6 +36,10 @@ const config = ({
       refreshToken: {
         enabled: false,
       },
+      cookie: {
+        secure: false,
+        httpOnly: false,
+      },
     },
   },
   upload: {
