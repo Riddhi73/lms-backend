@@ -23,9 +23,9 @@ module.exports = {
     );
 
     // 🔥 Send ONLY JWT – NO COOKIE
-    ctx.send({
+    ctx.body = {
       jwt,
       user: userSanitized,
-    });
+    };
   },
 };
