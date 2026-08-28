@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "lessons",
+  "collectionName": "quizzes",
   "info": {
-    "singularName": "lesson",
-    "pluralName": "lessons",
-    "displayName": "Lesson"
+    "singularName": "quiz",
+    "pluralName": "quizzes",
+    "displayName": "Quiz"
   },
   "options": {
     "draftAndPublish": true
@@ -12,25 +12,23 @@
   "pluginOptions": {},
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "Order": {
-      "type": "integer"
-    },
-    "Content": {
-      "type": "richtext"
+    "questions": {
+      "type": "json"
     },
     "course": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::course.course",
-      "inversedBy": "lessons"
+      "inversedBy": "quizzes"
     },
-    "progresses": {
+    "quiz_attempts": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::progress.progress",
-      "mappedBy": "lesson"
+      "target": "api::quiz-attempt.quiz-attempt",
+      "mappedBy": "quiz"
     }
   }
 }
