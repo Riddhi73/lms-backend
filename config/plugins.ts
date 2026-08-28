@@ -33,6 +33,9 @@ const config = ({
         httpOnly: true,
       },
       register: { allowedFields: ["user_type"] },
+      refreshToken: {
+        enabled: false,
+      },
     },
   },
   upload: {
