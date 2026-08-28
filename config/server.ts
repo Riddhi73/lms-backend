@@ -8,7 +8,7 @@ const config = ({
   app: {
     keys: env.array("APP_KEYS")!,
   },
-  url: env("PUBLIC_URL", "http://localhost:1337"),
+  url: env("PUBLIC_URL", "https://lms-backend-production-385b.up.railway.app"),
   webhooks: {
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
