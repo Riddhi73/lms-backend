@@ -20,6 +20,8 @@ module.exports = (config, { strapi }) => {
       );
     }
 
+    ctx.state.user = { ...ctx.state.user, user_type: user.user_type };
+
     await next();
   };
 };
