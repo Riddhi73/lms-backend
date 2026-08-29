@@ -29,7 +29,15 @@ export default {
       path: "/courses",
       handler: "course.create",
       config: {
-        policies: [],
+        // 🔥 Only Admin, Content Manager, and Instructor can create
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -38,7 +46,15 @@ export default {
       path: "/courses/:id",
       handler: "course.update",
       config: {
-        policies: [],
+        // 🔥 Only Admin, Content Manager, and Instructor can create
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -47,7 +63,15 @@ export default {
       path: "/courses/:id",
       handler: "course.delete",
       config: {
-        policies: [],
+        // 🔥 Only Admin, Content Manager, and Instructor can create
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },

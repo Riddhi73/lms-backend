@@ -29,7 +29,12 @@ module.exports = {
       path: "/progresses",
       handler: "progress.create",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["student"] },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -38,7 +43,12 @@ module.exports = {
       path: "/progresses/:id",
       handler: "progress.update",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["student"] },
+          },
+        ],
         middlewares: [],
       },
     },

@@ -29,7 +29,12 @@ module.exports = {
       path: "/blog-posts",
       handler: "blog-post.create",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["admin", "content_manager"] },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -38,7 +43,12 @@ module.exports = {
       path: "/blog-posts/:id",
       handler: "blog-post.update",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["admin", "content_manager"] },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -47,7 +57,12 @@ module.exports = {
       path: "/blog-posts/:id",
       handler: "blog-post.delete",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["admin", "content_manager"] },
+          },
+        ],
         middlewares: [],
       },
     },

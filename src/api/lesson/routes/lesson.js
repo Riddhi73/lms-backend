@@ -28,7 +28,14 @@ module.exports = {
       path: "/lessons",
       handler: "lesson.create",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -37,7 +44,14 @@ module.exports = {
       path: "/lessons/:id",
       handler: "lesson.update",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -46,7 +60,14 @@ module.exports = {
       path: "/lessons/:id",
       handler: "lesson.delete",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },

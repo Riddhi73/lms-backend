@@ -29,7 +29,14 @@ module.exports = {
       path: "/quizzes",
       handler: "quiz.create",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -38,7 +45,14 @@ module.exports = {
       path: "/quizzes/:id",
       handler: "quiz.update",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager", "instructor"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },
@@ -47,7 +61,14 @@ module.exports = {
       path: "/quizzes/:id",
       handler: "quiz.delete",
       config: {
-        policies: [],
+        policies: [
+          {
+            name: "global::is-role",
+            config: {
+              allowedRoles: ["admin", "content_manager"],
+            },
+          },
+        ],
         middlewares: [],
       },
     },

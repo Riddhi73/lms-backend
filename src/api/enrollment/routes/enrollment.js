@@ -29,7 +29,13 @@ module.exports = {
       path: "/enrollments",
       handler: "enrollment.create",
       config: {
-        policies: [],
+        // 🔥 Only students can enroll
+        policies: [
+          {
+            name: "global::is-role",
+            config: { allowedRoles: ["student"] },
+          },
+        ],
         middlewares: [],
       },
     },
