@@ -38,6 +38,12 @@
       "relation": "oneToMany",
       "target": "api::quiz.quiz",
       "mappedBy": "course"
+    },
+    "instructor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "courses"
     }
   }
 }
