@@ -1,7 +1,3 @@
-/**
- * course controller
- */
-
 "use strict";
 
 const { createCoreController } = require("@strapi/strapi").factories;
@@ -28,11 +24,6 @@ module.exports = createCoreController("api::course.course", ({ strapi }) => ({
         "Only admin, content manager, or instructor can create courses.",
       );
     }
-
-    // ✅ REMOVE the instructor assignment – createdBy is auto-populated
-    // Strapi automatically sets createdBy from ctx.state.user.id
-
-    // Call default create
     return super.create(ctx);
   },
 
@@ -54,14 +45,14 @@ module.exports = createCoreController("api::course.course", ({ strapi }) => ({
       return super.update(ctx);
     }
 
-    // Check ownership using createdBy
+    // Check ownership using instructor relation
     const course = await strapi.db.query("api::course.course").findOne({
       where: { id: id },
-      populate: ["createdBy"],
+      populate: ["instructor"],
     });
 
     if (!course) return ctx.notFound("Course not found");
-    if (course.createdBy.id !== user.id) {
+    if (course.instructor.id !== user.id) {
       return ctx.forbidden("You can only edit your own courses.");
     }
 
@@ -88,11 +79,11 @@ module.exports = createCoreController("api::course.course", ({ strapi }) => ({
 
     const course = await strapi.db.query("api::course.course").findOne({
       where: { id: id },
-      populate: ["createdBy"],
+      populate: ["instructor"],
     });
 
     if (!course) return ctx.notFound("Course not found");
-    if (course.createdBy.id !== user.id) {
+    if (course.instructor.id !== user.id) {
       return ctx.forbidden("You can only delete your own courses.");
     }
 
